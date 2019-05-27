@@ -5,20 +5,20 @@ import { CursosService } from '../cursos/cursos.service';
 @Component({
   selector: 'app-criar-curso',
   templateUrl: './criar-curso.component.html',
-  styleUrls: ['./criar-curso.component.css']
+  styleUrls: ['./criar-curso.component.css'],
+  providers: [CursosService]
 })
 export class CriarCursoComponent implements OnInit {
 
   cursos: string[] = [];
 
-  constructor(private cursosService: CursosService) { }
+  constructor(private _cursosService: CursosService) { }
 
   ngOnInit() {
-    this.cursos = this.cursosService.getCursos();
+    this.cursos = this._cursosService.getCursos();
   }
 
-  function setAndre(): void {
-
+  public onAddCurso(curso: string): void {
+    this._cursosService.addCurso(curso);
   }
-
 }
